@@ -24,7 +24,9 @@ module.exports = function(grunt) {
                     start_process : true,
                     server_path : './node_modules/selenium-standalone/.selenium/2.44.0/server.jar',
                     cli_args : {
-                        'webdriver.chrome.driver': './node_modules/selenium-standalone/.selenium/2.44.0/chromedriver'
+                        'webdriver.chrome.driver': './node_modules/selenium-standalone/.selenium/2.44.0/chromedriver',
+                        'webdriver.firefox.profile':'', //uses default firefox browser
+                        'webdriver.ie.driver':'' //driver only works with windows
                     }
                 },
 				test_settings: {
@@ -39,6 +41,16 @@ module.exports = function(grunt) {
 					desiredCapabilities: { 
 						browserName: 'chrome'
 					}
+				},
+				firefox: {
+					desiredCapabilities: { 
+						browserName: 'firefox'
+					}
+				},
+				iexplorer: {
+					desiredCapabilities: { 
+						browserName: 'internet explorer'
+					}
 				}
 			}
 		}
@@ -48,7 +60,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-nightwatch');
 
-	grunt.registerTask('default', ['jshint', 'nightwatch:chrome']);
+	grunt.registerTask('default', ['jshint', 'nightwatch:chrome', 'nightwatch:firefox']);
 	grunt.registerTask('dev', ['watch']);
 
 };
