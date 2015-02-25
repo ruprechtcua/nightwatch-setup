@@ -61,6 +61,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-nightwatch');
 
 	grunt.registerTask('default', ['jshint', 'nightwatch:chrome', 'nightwatch:firefox']);
+	grunt.registerTask('chrome', ['jshint', 'nightwatch:chrome']);
+	grunt.registerTask('firefox', ['jshint', 'nightwatch:firefox']);
 	grunt.registerTask('dev', ['watch']);
 
 };
