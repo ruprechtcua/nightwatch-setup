@@ -9,6 +9,7 @@
     "grunt-cli": "^0.1.13",
     "grunt-nightwatch": "^0.3.0",
     "grunt-contrib-jshint": "0.10.0",
+    "grunt-contrib-watch":"^0.6.0",
     "nightwatch": "^0.5.23",
     "selenium-standalone": "^2.43.1-2.9.0",
     "phantomjs": "1.9.12"

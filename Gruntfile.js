@@ -26,14 +26,19 @@ module.exports = function(grunt) {
                     cli_args : {
                         'webdriver.chrome.driver': './node_modules/selenium-standalone/.selenium/2.44.0/chromedriver',
                         'webdriver.firefox.profile':'', //uses default firefox browser
-                        'webdriver.ie.driver':'' //driver only works with windows
+                        'webdriver.ie.driver':''//driver only works with windows
+                       
                     }
                 },
 				test_settings: {
+
 					default: {
+						
 						desiredCapabilities: { 
 							browserName: 'phantomjs',
-							'phantomjs.binary.path': './node_modules/phantomjs/lib/phantom/phantomjs.exe'
+							'javascriptEnabled' : true,
+  							'acceptSslCerts' : true,
+							'phantomjs.binary.path': './node_modules/phantomjs/lib/phantom/bin/phantomjs'
 						}
 					}
 				},
@@ -49,7 +54,7 @@ module.exports = function(grunt) {
 				},
 				iexplorer: {
 					desiredCapabilities: { 
-						browserName: 'internet explorer'
+						browserName: 'ie'
 					}
 				}
 			}
@@ -58,11 +63,13 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-nightwatch');
 
 	grunt.registerTask('default', ['jshint', 'nightwatch:chrome', 'nightwatch:firefox']);
 	grunt.registerTask('chrome', ['jshint', 'nightwatch:chrome']);
 	grunt.registerTask('firefox', ['jshint', 'nightwatch:firefox']);
 	grunt.registerTask('dev', ['watch']);
+	
 
 };
